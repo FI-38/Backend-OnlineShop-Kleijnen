@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import pool from '../db.js';
+import {pool } from '../db.js';
 
 export default async (req, res) => {
     console.log(req.body);

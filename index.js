@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 
-import getDatabaseConnection from './db.js';
+import { getDatabaseConnection, pool } from './db.js';
 import authMiddleware from './middleware/auth.js';
 
 import loginRoute from './routes/login.js';

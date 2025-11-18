@@ -1,7 +1,7 @@
 import mariadb from 'mariadb';
 import 'dotenv/config';
 
-const pool = mariadb.createPool({
+export const pool = mariadb.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
@@ -11,7 +11,7 @@ const pool = mariadb.createPool({
   insertIdAsNumber: true
 });
 
-export default async function getDatabaseConnection () {
+export async function getDatabaseConnection () {
   try {
       const connection = await pool.getConnection();
       console.log("Successfully established a DB connection.");
