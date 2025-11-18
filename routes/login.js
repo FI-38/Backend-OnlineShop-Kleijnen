@@ -7,7 +7,6 @@ export default async (req, res) => {
     console.log(req.body);
     const { username, password } = req.body;
 
-    // const conn = await pool.getConnection();
     const conn = getDatabaseConnection();
 
     console.log(conn);
@@ -18,17 +17,17 @@ export default async (req, res) => {
     } catch (error) {
         console.log(error);
     } finally {
-       // conn.release();
+      // conn.release();
     }
     if (!user) return res.status(400).json(
-        { error: 'Benutzer nicht gefunden' });
+        { error: `No user found with username ${username}` });
 
-    const passwordMatch = await bcrypt.compare(password, user.password_hash);
+    const passwordMatch = await bcrypt.compare(password, user.password_hash); // test
     if (!passwordMatch) {
-        return res.status(400).json({ error: 'Falsches Passwort' });
+        return res.status(400).json({ error: 'Password incorrect.' });
     }
     const token = jwt.sign(
-        { id: user.id, username: user.username },
+        { id: user.userID, username: user.username },
         process.env.JWT_SECRET_KEY,
         { expiresIn: '1h' }
     );
