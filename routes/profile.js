@@ -1,11 +1,9 @@
 import getDatabaseConnection from '../db.js';
-//import pool from '../db.js';
 import authMiddleware from '../middleware/auth.js';
 
 export const getProfile = [authMiddleware, async (req, res) => {
     const userId = req.user.id;
 
-     //const conn = await pool.getConnection();
    const conn = getDatabaseConnection();
 
     try {

@@ -11,28 +11,23 @@ const pool = mariadb.createPool({
   insertIdAsNumber: true
 });
 
-
-// Verbindung testen
-// pool.getConnection()
-//   .then(conn => {
-//     console.log('Datenbankverbindung erfolgreich');
-//     conn.release();
-//   })
-//   .catch(err => {
-//     console.error('Datenbankverbindung fehlgeschlagen:', err);
-//   });
-
-
-// export default pool;
-
-// export default pool;
 export default async function getDatabaseConnection () {
   try {
       const connection = await pool.getConnection();
-      console.log("Erfolgreich mit der Datenbank verbunden");
+      console.log("Successfully established a DB connection.");
       return connection;
   } catch (error) {
-      console.error("Fehler bei der Verbindung zur Datenbank:", error);
+      console.error("Error when connecting to the database:", error);
       throw error;
   }
 }
+
+
+
+
+
+
+
+
+
+// release it after done using it in a route or login

@@ -3,8 +3,6 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import getDatabaseConnection from '../db.js';
 
-
-
 export default async (req, res) => {
     console.log(req.body);
     const { username, password } = req.body;
