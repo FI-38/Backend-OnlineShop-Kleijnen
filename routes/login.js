@@ -7,20 +7,21 @@ export default async (req, res) => {
     console.log(req.body);
     const { username, password } = req.body;
 
-    const conn = getDatabaseConnection();
+    const conn = await getDatabaseConnection();
 
-    console.log(conn);
+    console.log("CONN", conn);
     let user;
     try {
-        [user] = await conn.query(
-            'SELECT * FROM user WHERE username = ?', [username]);
+        [user] = await conn.query('SELECT * FROM user WHERE username = ?', [username]);
     } catch (error) {
-        console.log(error);
+        console.log("ERROR", error);
     } finally {
+        console.log("USER HERE", user);
       // conn.release();
     }
+    
     if (!user) return res.status(400).json(
-        { error: `No user found with username ${username}` });
+        { error: `No user found with username '${username}'` });
 
     const passwordMatch = await bcrypt.compare(password, user.password_hash); // test
     if (!passwordMatch) {
