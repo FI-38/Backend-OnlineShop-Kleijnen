@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 //import pool from './db.js';
 import cors from 'cors';
 import authMiddleware from './middleware/auth.js';
-// import pool from './db.js';
 import getDatabaseConnection from './db.js';
 
 import loginRoute from './routes/login.js';

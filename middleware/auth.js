@@ -1,11 +1,10 @@
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
-// Authentifizierungs-Middleware
 const authMiddleware = async (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
-        return res.status(401).json({ error: 'Nicht autorisiert' });
+        return res.status(401).json({ error: 'Not authorised' });
     }
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
@@ -13,7 +12,7 @@ const authMiddleware = async (req, res, next) => {
         next();
     } catch (error) {
         console.log(error);
-        res.status(403).json({ error: 'Token ungültig' });
+        res.status(403).json({ error: 'Invalid token' });
     }
 };
 
