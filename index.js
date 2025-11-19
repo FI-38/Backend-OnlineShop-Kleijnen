@@ -35,6 +35,8 @@ app.post('/api/login', loginRoute);
 app.post('/api/register', registerRoute);
 
 
+
+
 // PROFILES (optional)
 // app.get('/api/profile', authMiddleware, getProfile); 
 // app.put('/api/profile', authMiddleware, updateProfile);
