@@ -3,17 +3,21 @@ import {pool } from '../db.js';
 import authMiddleware from '../middleware/auth.js';
 
 export const getProfile = [authMiddleware, async (req, res) => {
-    const userId = req.user.userID;
+    const userId = req.user.id;
     const conn = await pool.getConnection();
+    console.log("req.user:", req.user);
+    console.log("userID:", req.user?.id);
 
     try {
+        console.log('UESRID', userId);
+
         const [userResult] = await conn.query(
-            `SELECT u.first_name, u.username, u.email
-             FROM user u
-             WHERE u.userID = ?`,
+            `SELECT first_name, username, email FROM user WHERE userID = ?`,
             [userId]
         );
-        if (userResult?.length === 0) {
+        console.log("conn:", typeof conn.query);
+        console.log(' I AM RESULT:', userResult)
+        if (userResult.length === 0 || !userResult) {
             return res.status(404).json({ error: 'Profile not found.' });
         }
         res.json(userResult[0]);
