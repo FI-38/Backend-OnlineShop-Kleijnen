@@ -8,7 +8,7 @@ import authMiddleware from './middleware/auth.js';
 
 import loginRoute from './routes/login.js';
 import registerRoute from './routes/register.js';
-import { getProfile, updateProfile } from './routes/profile.js';
+import { getProfile } from './routes/profile.js';
  
 BigInt.prototype.toJSON = function() { return this.toString() }  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/BigInt_not_serializable
 
@@ -38,8 +38,7 @@ app.post('/api/register', registerRoute);
 
 
 // PROFILES (optional)
-// app.get('/api/profile', authMiddleware, getProfile); 
-// app.put('/api/profile', authMiddleware, updateProfile);
+app.get('/api/profile', authMiddleware, getProfile); 
 // app.get('/api/users', async (req, res) => {
 //     const conn = await getDatabaseConnection();
 //     const users = await conn.query('SELECT * FROM user');

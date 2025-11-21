@@ -34,7 +34,7 @@ export default async (req, res) => {
         { expiresIn: '1h' }
     );
 
-    res.status(200).json({ token, userID: user.userID });
+    res.status(200).json({ token, userID: user.userID, username: user.username });
      } catch (error) {
         console.log(error);
         res.status(500).json({error: 'Server error'});
