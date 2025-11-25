@@ -19,3 +19,5 @@ coverage/
 
 # Optional
 *.tgz
+
+uploads/
