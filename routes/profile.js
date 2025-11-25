@@ -20,7 +20,7 @@ export const getProfile = [authMiddleware, async (req, res) => {
         if (userResult.length === 0 || !userResult) {
             return res.status(404).json({ error: 'Profile not found.' });
         }
-        res.json(userResult[0]);
+        res.json(userResult);
 
     } catch (error) {
         console.error('Error when fetching your profile:', error);
