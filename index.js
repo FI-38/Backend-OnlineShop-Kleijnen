@@ -6,7 +6,7 @@ import loginRoute from './routes/login.js';
 import registerRoute from './routes/register.js';
 import { getProfile } from './routes/profile.js';
 import uploadRoute from './routes/upload.js'; // ✅ ES module import
-import { getAllProducts, updateProduct, deleteProduct } from "./routes/products.js";
+import { getAllProducts, updateProduct, deleteProduct, getProductByID } from "./routes/products.js";
 
 
 BigInt.prototype.toJSON = function() { return this.toString() };
@@ -35,6 +35,7 @@ app.use('/api/upload', uploadRoute);  // ✅ fixed for ES modules
 
 // PRODUCTS
 app.get('/api/products', getAllProducts);
+app.get('/api/products/:id', getProductByID);
 app.put('/api/products/:id', updateProduct);
 app.delete('/api/products/:id', deleteProduct);
 

@@ -15,6 +15,27 @@ export const getAllProducts = async (req, res) => {
         }
         };
 
+// GET PRODUCT BY ID
+export const getProductByID = async (req, res) => {
+    const { id } = req.params;
+    let conn;
+
+    try {
+        conn = await pool.getConnection();
+        const rows = await conn.query("SELECT * FROM product WHERE productID = ?", [id]);
+
+        if (rows.length === 0) {
+            return res.status(404).json({ error: "No product found." });
+        }
+        res.json(rows); 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Server error" });
+    } finally {
+        if (conn) conn.release();
+    }
+};
+
 // UPDATE product
 export const updateProduct = async (req, res) => {
     let conn;
@@ -41,12 +62,12 @@ export const deleteProduct = async (req, res) => {
     let conn;
 
     try {
-    conn = await pool.getConnection();
+        conn = await pool.getConnection();
     await conn.query("DELETE FROM product WHERE productID = ?", [id]);
-    res.json({ success: true });
-    } catch (err) {
-        res.status(500).json({ error: "Server error" });
-    } finally {
-        conn.release();
+        res.json({ success: true });
+        } catch (err) {
+            res.status(500).json({ error: "Server error" });
+        } finally {
+            conn.release();
     }
 };
