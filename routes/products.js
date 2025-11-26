@@ -17,7 +17,7 @@ export const getAllProducts = async (req, res) => {
 
 // GET PRODUCT BY ID
 export const getProductByID = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params; // comes from url
     let conn;
 
     try {
@@ -32,7 +32,7 @@ export const getProductByID = async (req, res) => {
         console.log(err);
         res.status(500).json({ error: "Server error" });
     } finally {
-        if (conn) conn.release();
+        conn.release();
     }
 };
 
