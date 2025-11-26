@@ -29,12 +29,12 @@ export default async (req, res) => {
         return res.status(400).json({ error: 'Password incorrect.' });
     }
     const token = jwt.sign(
-        { id: user.userID, username: user.username },
+        { id: user.userID, username: user.username, rolle: user.rolle },
         process.env.JWT_SECRET_KEY,
         { expiresIn: '1h' }
     );
 
-    res.status(200).json({ token, userID: user.userID, username: user.username });
+    res.status(200).json({ token, userID: user.userID, username: user.username, rolle: user.rolle });
      } catch (error) {
         console.log(error);
         res.status(500).json({error: 'Server error'});

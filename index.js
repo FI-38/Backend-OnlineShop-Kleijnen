@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import authMiddleware from './middleware/auth.js';
+import adminMiddleware from './middleware/checkAdmin.js';
 
 import loginRoute from './routes/login.js';
 import registerRoute from './routes/register.js';
 import { getProfile } from './routes/profile.js';
 import uploadRoute from './routes/upload.js'; // ✅ ES module import
 import { getAllProducts, updateProduct, deleteProduct, getProductByID } from "./routes/products.js";
+
 
 
 BigInt.prototype.toJSON = function() { return this.toString() };
@@ -31,7 +33,7 @@ app.post('/api/login', loginRoute);
 app.post('/api/register', registerRoute);
 
 // UPLOAD IMG + product fields
-app.use('/api/upload', uploadRoute);  // ✅ fixed for ES modules
+app.use('/api/upload', authMiddleware, adminMiddleware, uploadRoute); 
 
 // PRODUCTS
 app.get('/api/products', getAllProducts);
@@ -42,6 +44,9 @@ app.delete('/api/products/:id', deleteProduct);
 
 // PROFILE
 app.get('/api/profile', authMiddleware, getProfile);
+
+
+
 
 // catch-all error middleware
 app.use((err, req, res, next) => {
