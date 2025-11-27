@@ -17,6 +17,13 @@ export default async (req, res) => {
         });
     }
 
+    var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/ ;
+
+    if (!passwordRegex.test(password) ) {
+        return res.status(400).json({ error: 'Password too weak.' });
+    }
+
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
