@@ -101,7 +101,7 @@ UPDATE user SET rolle = 'admin' WHERE id = 1;
 
 
 ## Project structure
-
+```bash
 BACKEND/
 ├── middleware/
 │   ├── auth.js
@@ -123,3 +123,4 @@ BACKEND/
 ├── package.json
 ├── README.md
 └── server.js
+```
