@@ -20,9 +20,10 @@ Backend server for an online shop, built with Node.js/Express.js and MariaDB as 
 - CORS enabled
 
 ## Scripts to start the server
+```bash
 npm start        # runs index.js
 npm run dev      # runs nodemon server.js
-
+```
 Server runs on: ``` http://YOUR-SERVER-ADDRESS:5173```
 
 ## Setup
