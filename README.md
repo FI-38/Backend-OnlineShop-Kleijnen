@@ -4,6 +4,13 @@ Backend server for an online shop, built with Node.js/Express.js and MariaDB as 
 
 **Author**: Gracia Kleijnen
 
+## Tech Stack
+
+![Express](https://img.shields.io/badge/Backend-Express-000000?logo=express&logoColor=white)
+![Node.js](https://img.shields.io/badge/Runtime-Node.js-339933?logo=node.js&logoColor=white)
+![MariaDB](https://img.shields.io/badge/Database-MariaDB-003545?logo=mariadb&logoColor=white)
+![GitHub](https://img.shields.io/badge/Version%20Control-GitHub-181717?logo=github&logoColor=white)
+
 ## Features
 
 - User authorization with JWT + bcrypt
@@ -93,11 +100,26 @@ UPDATE user SET rolle = 'admin' WHERE id = 1;
 ``` 
 
 
-## Tech Stack
-
-![Express](https://img.shields.io/badge/Backend-Express-000000?logo=express&logoColor=white)
-![Node.js](https://img.shields.io/badge/Runtime-Node.js-339933?logo=node.js&logoColor=white)
-![MariaDB](https://img.shields.io/badge/Database-MariaDB-003545?logo=mariadb&logoColor=white)
-![GitHub](https://img.shields.io/badge/Version%20Control-GitHub-181717?logo=github&logoColor=white)
-
 ## Project structure
+
+BACKEND/
+├── middleware/
+│   ├── auth.js
+│   ├── checkAdmin.js
+│   └── upload.js
+├── routes/
+│   ├── login.js
+│   ├── products.js
+│   ├── profile.js
+│   ├── register.js
+│   └── upload.js
+├── uploads/
+├── .env
+├── .env.example
+├── .gitignore
+├── db.js
+├── index.js
+├── package-lock.json
+├── package.json
+├── README.md
+└── server.js
