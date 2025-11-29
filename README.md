@@ -13,18 +13,11 @@ Backend server for an online shop, built with Node.js/Express.js and MariaDB as 
 
 ## Features
 
-- User authorization with JWT + bcrypt
-- CRUD for products
+- User authorization with JWT, bcrypt, CORS
+- Upload, edit or delete products
 - MariaDB database connection
 - dotenv support
-- CORS enabled
-
-## Scripts to start the server
-```bash
-npm start        # runs index.js
-npm run dev      # runs nodemon server.js
-```
-Server runs on: ``` http://YOUR-SERVER-ADDRESS:5173```
+- Version control with Git & GitHub
 
 ## Setup
 
@@ -100,6 +93,33 @@ UPDATE user SET rolle = 'admin' WHERE id = 1;
 
 ``` 
 
+## Scripts to start the server
+```bash
+npm start        # runs index.js
+npm run dev      # runs nodemon server.js
+```
+Server runs on: ``` http://YOUR-SERVER-ADDRESS:5173```
+
+
+## API overview
+
+#### User
+
+#### Login & Register
+- ```POST /api/login``` - Login
+- ```POST /api/register``` - Register
+
+#### Products
+- ```GET /api/products``` - Get products 
+- ```GET /api/products:id``` - Get product by ID
+
+#### Profile
+- ```GET /api/profile``` - View profile 
+
+### Admin
+- ```POST /api/upload``` - Upload product 
+- ```PUT /api/products:id``` - Update product by ID
+- ```DELETE /api/products```  - Delete product by ID  
 
 ## Project structure
 ```bash
