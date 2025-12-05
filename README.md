@@ -4,7 +4,7 @@ Backend server for an online shop, built with Node.js/Express.js and MariaDB as 
 
 **Author**: Gracia Kleijnen
 
-[Visit the live store](http://kleijnen.fi38.j23d.de/) or [view the frontend repository](https://github.com/FI-38/Backend-OnlineShop-Kleijnen).
+[Visit the live store](http://kleijnen.fi38.j23d.de/) or [view the frontend repository](https://github.com/FI-38/Frontend-OnlineShop-Kleijnen).
 
 ## Tech Stack
 
