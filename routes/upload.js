@@ -4,7 +4,6 @@ import { pool } from "./../db.js";
 export default [ upload.single('image'), async (req, res) => {
     try {
       const { product_title, description, price } = req.body;
-      console.log('here is the requst body', req.body)
       console.log(product_title, description, price);
       const file = req.file;
 
